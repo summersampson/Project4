@@ -9,6 +9,8 @@ bool gameOver = false;
 
 char[] board = new char[9];
 
+string input = "";
+
 int player = 0;
 
 while (gameOver == false) 
@@ -17,6 +19,20 @@ while (gameOver == false)
     gt.displayBoard(board);
 
     Console.WriteLine("Player X, please enter the number of an open space between 1 and 9: ");
+
+    while (true)
+    {
+        input = Console.ReadLine();
+        if (int.TryParse(input, out player) && player >= 1 && player <= 9)
+        {
+            break;
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Please enter a number between 1 and 9.");
+        }
+    }
+
 
     player = int.Parse(Console.ReadLine());
 
