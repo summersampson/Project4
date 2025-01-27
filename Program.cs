@@ -50,7 +50,21 @@ while (gameOver == false)
         gt.displayBoard(board);
 
         Console.WriteLine("Player O, please enter the number of an open space between 1 and 9: ");
-        player = int.Parse(Console.ReadLine());
+        // player = int.Parse(Console.ReadLine());
+
+        while (true)
+        {
+            input = Console.ReadLine();
+            if (int.TryParse(input, out player) && player >= 1 && player <= 9)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a number between 1 and 9.");
+            }
+        }
+
         board[player - 1] = 'O';
         // Check for a winner
         if (gt.checkForWinner(board) == true)
